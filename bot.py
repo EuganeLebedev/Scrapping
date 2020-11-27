@@ -11,7 +11,6 @@ if __name__ == "__main__":
 
         bot_token = settings.get("bot_token")
         channel = settings.get("channel")
-        print(bot_token, channel)
 
 
         message = get_data_from_url()
