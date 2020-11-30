@@ -32,13 +32,13 @@ def get_data_from_url():
 
     request_result = requests.get(url, headers=headers).text
 
-    soup = BeautifulSoup(request_result, "html5lib").findChildren("div",
+    soup = BeautifulSoup(request_result, "html5lib").findChild("div",
                                                                   {
-                                                                      "class": "offers-description__part "
-                                                                               "offers-description__part_1"})
-    subresult = soup[0].findChildren("div", {"class": "offers-description__price"})
-    price = (subresult[0].findChildren("span", {"class": "helpers_hide_tablet"}))
-    price_text = price[0].text
+                                                                      "class": "offers-description__part ",
+                                                                      "class": "offers-description__part_1"})
+    subresult = soup.findChild("div", {"class": "offers-description__price"})
+    price = (subresult.findChild("span", {"class": "helpers_hide_tablet"}))
+    price_text = price.text
 
     new_price = float(price_text.split(" ")[0].replace(",", "."))
 
